@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <title>The Dice game</title>
+</head>
+
+<body>
+    <main>
+        <section class="board left active">
+            <p class="name p0-name">Player 1</p>
+            <p class="score p0-score">0</p>
+            <div class="score-board p0-score-board">
+                <p>Current</p>
+                <p class="current p0-current">0</p>
+            </div>
+        </section>
+        <button class="button new-game"><i class="new-game-icon"></i> New Game </button>
+        <button class="button roll-dice"><i class="roll-dice-icon"></i>Roll Dice</button>
+        <button class="button hold"><i class="hold-icon"></i>Hold</button>
+        <section class="board right">
+            <p class="name p1-name ">Player 2</p>
+            <p class="score p1-score">0</p>
+            <div class="score-board p1-score-board">
+                <p>Current</p>
+                <p class="current p1-current">0</p>
+            </div>
+        </section>
+        <div class='dice-div'>
+            <img src='./img/dice-1.png' class='dice'>
+        </div>
+    </main>
+</body>
+<script src="./script.js"></script>
+
+</html>
