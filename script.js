@@ -1,12 +1,16 @@
-var scores, currentScore, playing, name1, name2, preScore, ludo, one, six, doubleSix, maxScore;
+var scores, currentScore, playing, name1, name2, preScore, ludo, one, six, doubleSix, maxScore, holdSound, yay;
 scores = [0, 0];
 currentScore = 0;
 activePlayer = 0;
 playing = 1;
+
+//Audio variables
 ludo = new Audio('./audio/ludo.mp3');
 one = new Audio('./audio/one.wav');
 six = new Audio('./audio/six.wav');
 doubleSix = new Audio('./audio/doublesix.wav');
+holdSound = new Audio('./audio/hold.wav');
+yay = new Audio('./audio/yay.wav');
 
 var diceDOM = document.querySelector('.dice');
 var diceBlock = document.querySelector('.dice-div');
@@ -23,6 +27,7 @@ function changePlayer() {
 
 }
 var read = 1;
+
 function roll() {
     if (playing) {
         //Calculaing the dice
@@ -38,7 +43,7 @@ function roll() {
         if (read) {
             name1 = document.getElementById('name0').value;
             name2 = document.getElementById('name1').value;
-            if(name1.length == 0 || name2.length == 0){
+            if (name1.length == 0 || name2.length == 0) {
                 name1 = 'Player 1';
                 name2 = 'Player 2';
             }
@@ -96,13 +101,18 @@ function roll() {
 
 function hold() {
     if (playing && currentScore > 0) {
-        scores[activePlayer] += currentScore
+        holdSound.play();
+        
+        //Get the max value from the text
         maxScore = document.getElementById('max').value;
-        if(maxScore.length == 0)
-            maxScore = 100;
+        if (maxScore.length == 0)
+        maxScore = 100;
+        
+        scores[activePlayer] += currentScore
 
         //Winning Condition
         if (scores[activePlayer] >= maxScore) {
+            yay.play();
             document.querySelector('.p' + activePlayer + '-score').textContent = scores[activePlayer];
             document.querySelector('.p' + activePlayer + '-name').textContent = 'Winner!!';
             document.querySelector('.active').classList.add('winner');
@@ -115,6 +125,8 @@ function hold() {
 }
 
 function newGame() {
+    yay.pause();
+    yay.currentTime = 0.0;
     scores = [0, 0];
     currentScore = 0;
     playing = 1;
