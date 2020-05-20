@@ -74,7 +74,11 @@ main{
     font-size: 20px;
     font-weight: 400;
     text-transform: uppercase;
-    transition: all 700ms;
+    transition: transform 100ms, font-weight 300ms;
+}
+
+.hold:active{
+    transform: translateY(10px);
 }
 
 .button:hover{
