@@ -100,6 +100,8 @@ function hold() {
         maxScore = document.getElementById('max').value;
         if(maxScore.length == 0)
             maxScore = 100;
+
+        //Winning Condition
         if (scores[activePlayer] >= maxScore) {
             document.querySelector('.p' + activePlayer + '-score').textContent = scores[activePlayer];
             document.querySelector('.p' + activePlayer + '-name').textContent = 'Winner!!';
