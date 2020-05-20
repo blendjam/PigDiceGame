@@ -87,6 +87,37 @@ main{
     outline: none;
 }
 
+main #max{
+    position: absolute;
+    top:20vh;
+    height: 2rem;
+    width: 7rem;
+    text-align: center;
+    color:crimson;
+    font-weight:600;
+    font-size: 25px;
+}
+#max:focus{
+    outline:none;
+    border: 1px solid crimson;
+}
+#max::placeholder{
+    font-weight: 300;
+    font-size: 20px;
+}
+.name input{
+    height: 2.5rem;
+    width: 15rem;
+    text-align: center;
+    color:crimson;
+    font-weight:600;
+    font-size: 30px;
+}
+.name input:focus{
+    outline: none;
+    border: 1px solid crimson;
+}
+
 i{
     transition: margin 0.3s;
     display: inline-block;
@@ -97,7 +128,7 @@ i{
     font-style: normal;
 }
 .new-game{
-    top:100px;
+    top:10vh;
 }
 .new-game-icon::before{
     content: '\2295';
