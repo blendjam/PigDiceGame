@@ -1,12 +1,12 @@
-var scores, currentScore, playing, name1, name2, preScore;
+var scores, currentScore, playing, name1, name2, preScore, ludo, one, six, doubleSix;
 scores = [0, 0];
 currentScore = 0;
 activePlayer = 0;
 playing = 1;
-var ludo = new Audio('./audio/ludo.mp3');
-var one = new Audio('./audio/one.wav');
-var six = new Audio('./audio/six.wav');
-var doubleSix = new Audio('./audio/doublesix.wav');
+ludo = new Audio('./audio/ludo.mp3');
+one = new Audio('./audio/one.wav');
+six = new Audio('./audio/six.wav');
+doubleSix = new Audio('./audio/doublesix.wav');
 
 var diceDOM = document.querySelector('.dice');
 var diceBlock = document.querySelector('.dice-div');
@@ -27,11 +27,13 @@ function roll() {
     if (playing) {
         var dice = Math.floor(Math.random() * 6) + 1;
         diceDOM.src = './img/dice-' + dice + '.png';
+        diceDOM.classList.remove('move2');
+        diceDOM.classList.remove('move');
+        diceBlock.classList.remove('rotate');
         if(preScore === 6 && dice === 6){
             doubleSix.play();
             scores[activePlayer] = 0;
             dice = 0;
-            diceDOM.classList.remove('move2');
             window.requestAnimationFrame(function () {
                 diceDOM.classList.add('move2');
             });
@@ -48,14 +50,12 @@ function roll() {
             currentScore += dice;
             if(dice === 6)
                 six.play();
-            diceBlock.classList.remove('rotate');
             window.requestAnimationFrame(function () {
                 diceBlock.classList.add('rotate');
             });
             document.querySelector('.p' + activePlayer + '-current').textContent = currentScore;
         } else {
             one.play();
-            diceDOM.classList.remove('move');
             window.requestAnimationFrame(function () {
                 diceDOM.classList.add('move');
             });
